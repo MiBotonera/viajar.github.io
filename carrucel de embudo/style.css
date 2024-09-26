@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+
+/* Establece estilos globales para todos los elementos */
+*{
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina rellenos por defecto */
+    box-sizing: border-box; /* Incluye bordes y rellenos en el cálculo del ancho y alto */
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' a todo el documento */
+}
+/* Estilos del encabezado */
+header{
+    width: 100%; /* El encabezado ocupa todo el ancho */
+    max-width: 100%; /* Asegura que el ancho máximo no exceda el 100% */
+    padding-left: 100px; /* Espacio a la izquierda del encabezado */
+    height: 70px; /* Altura fija del encabezado */
+    display: flex; /* Utiliza flexbox para alinear elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos dentro del encabezado */
+    position: relative; /* Posicionamiento relativo para elementos posicionados absolutamente dentro */
+    z-index: 1000; /* Controla el apilamiento de elementos superpuestos */
+    background: rgba(0, 0, 0, 0); /* Fondo semi-transparente */
+}
+/* Estilos para la navegación dentro del encabezado */
+header nav{
+    display: flex; /* Utiliza flexbox para los enlaces de navegación */
+    gap: 15px; /* Espacio entre los enlaces */
+}
+header nav a{
+    color: #bfb5b582; /* Color de texto blanco para los enlaces */
+    padding: 5px 10px; /* Espaciado interno de los enlaces */
+    font-size: 16px; /* Tamaño de fuente de los enlaces */
+    transition: 0.2s; /* Transición suave para efectos hover */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+}
+header nav a:hover{
+    background: rgba(255, 4, 163, 0.839); /* Fondo semi-transparente al pasar el cursor */
+    border-radius: 5px; /* Bordes redondeados en estado hover */
+}
+/* Logo en el encabezado */
+header .logo {
+    position: absolute; /* Posiciona el logo de forma absoluta dentro del encabezado */
+    top: 15px; /* Distancia desde la parte superior */
+    left: 15px; /* Distancia desde el lado izquierdo */
+}
+header .logo img {
+    width: 70px; /* Ancho del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+/* Estilos del carrusel */
+.carousel{
+    width: 100vw; /* Ocupa todo el ancho de la ventana */
+    height: calc(100vh - 80px); /* Altura de la ventana menos el alto del encabezado */
+    margin-top: -80px; /* Compensa el espacio ocupado por el encabezado */
+    overflow: hidden; /* Oculta contenido que se desborda */
+    position: relative; /* Posicionamiento relativo para elementos hijos posicionados absolutamente */
+}
+.carousel .list{
+    position: relative; /* Necesario para posicionar elementos hijos absolutamente */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+}
+.carousel .list .item{
+    width: 140px; /* Ancho de cada elemento del carrusel */
+    height: 170px; /* Altura de cada elemento */
+    position: absolute; /* Permite posicionar cada item en lugares específicos */
+    top:85%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta la posición para centrar verticalmente */
+    left: 100%; /* Posiciona el elemento a un 70% desde la izquierda */
+    border-radius: 20px; /* Bordes redondeados para los items */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.495); /* Agrega sombra para profundidad */
+    background-position: center; /* Centra la imagen de fondo */
+    background-size: cover; /* La imagen de fondo cubre todo el contenedor */
+    z-index: 100; /* Controla la superposición de elementos */
+    transition: 1s; /* Transición suave para animaciones */
+}
+/* Estilos específicos para los dos primeros elementos del carrusel */
+.carousel .list .item:nth-child(1),
+.carousel .list .item:nth-child(2){
+    top: 0; /* Posiciona en la parte superior */
+    left: 0; /* Alinea a la izquierda */
+    transform: translate(0, 0); /* Sin transformación */
+    border-radius: 0; /* Sin bordes redondeados */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa toda la altura */
+}
+/* Posicionamiento específico para los siguientes elementos del carrusel */
+.carousel .list .item:nth-child(3){
+    left: 67%; /* Ajusta la posición horizontal */
+}
+.carousel .list .item:nth-child(4){
+    left: calc(67% + 200px); /* Calcula la posición sumando píxeles */
+}
+.carousel .list .item:nth-child(5){
+    left: calc(67% + 400px); /* Continúa desplazando los elementos */
+}
+.carousel .list .item:nth-child(6){
+    left: calc(67% + 600px); /* Ajusta para el sexto elemento */
+}
+.carousel .list .item:nth-child(n+7){
+    left: calc(67% + 800px); /* Posiciona elementos a partir del séptimo */
+    opacity: 0; /* Oculta los elementos adicionales */
+}
+/* Estilos para el contenido dentro de cada elemento del carrusel */
+.list .item .content{
+    position: absolute; /* Posicionamiento dentro del item */
+    top: 18%; /* Centra verticalmente */
+    left: 25px; /* Margen desde el lado izquierdo */
+    transform: translateY(-50%); /* Ajusta la posición para centrar */
+    width: 400px; /* Ancho del contenido */
+    color: #ffffff; /* Color del texto */
+    display: none; /* Oculta el contenido por defecto */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.list .item:nth-child(2) .content{
+    display: block; /* Muestra el contenido sólo en el segundo elemento */
+}
+
+/* Caja glasmórfica */
+.glass-container {
+    background: rgba(79, 79, 79, 0.273); /* Fondo semi-transparente oscuro */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 25px; /* Espaciado interno */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores WebKit */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde semi-transparente */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la caja */
+    color: #ffffff; /* Color del texto */
+    text-shadow: #000000 4px; /* Sombra del texto para efecto de relieve */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+/* Estilos del texto y botones dentro de la caja glasmórfica */
+.glass-container .title{
+    font-size: 36px; /* Tamaño de fuente grande para el título */
+    font-weight: bold; /* Negrita para resaltar */
+    margin-bottom: 10px; /* Espacio debajo del título */
+    text-shadow: none; /* Elimina sombras adicionales en el texto */
+}
+
+.glass-container .name{
+    font-size: 24px; /* Tamaño de fuente para el nombre */
+    margin-bottom: 10px; /* Espacio debajo del nombre */
+}
+
+.glass-container .des{
+    font-size: 16px; /* Tamaño de fuente para la descripción */
+    margin-bottom: 20px; /* Espacio debajo de la descripción */
+}
+
+/* Ajuste del color y estilo de los botones */
+.glass-container .btn button{
+    background: rgba(0, 255, 242, 0.7); /* Fondo semi-transparente turquesa */
+    color: #333333; /* Color de texto oscuro para contraste */
+}
+
+.glass-container .btn{
+    display: flex; /* Flexbox para alinear botones */
+    gap: 10px; /* Espacio entre botones */
+}
+
+.glass-container .btn button{
+    padding: 10px 20px; /* Espaciado interno de los botones */
+    border: none; /* Sin borde para un estilo limpio */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de fuente del botón */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    background: rgba(0, 255, 242, 0.7); /* Fondo semi-transparente */
+    color: #000; /* Color de texto negro */
+    transition: 0.3s; /* Transición suave en hover */
+}
+
+.glass-container .btn button:hover{
+    background: rgba(0, 255, 242, 1); /* Fondo más sólido al pasar el cursor */
+}
+
+/* Flechas de navegación en el carrusel */
+.arrows{
+    position: absolute; /* Posicionamiento dentro del carrusel */
+    bottom: 20px; /* Separación desde la parte inferior */
+    right: 50%; /* Alineación horizontal central */
+    transform: translateX(50%); /* Ajuste para centrar las flechas */
+    z-index: 100; /* Asegura que las flechas estén por encima de otros elementos */
+    display: flex; /* Flexbox para las flechas */
+    gap: 10px; /* Espacio entre las flechas */
+}
+
+.arrows button{
+    width: 50px; /* Ancho de las flechas */
+    height: 50px; /* Altura de las flechas */
+    border-radius: 50%; /* Forma circular */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente oscuro */
+    color: #ffffff; /* Color de las flechas */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno al hacer clic */
+    font-size: 24px; /* Tamaño del icono o texto dentro de la flecha */
+    font-weight: bold; /* Negrita para resaltar */
+    transition: 0.5s; /* Transición suave en hover */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.arrows button:hover{
+    background: #00f7ff; /* Cambia el fondo al pasar el cursor */
+    color: #000; /* Cambia el color del icono o texto */
+}
+
+/* Barra de tiempo que indica el progreso del carrusel */
+.carousel .timeRunning{
+    position: absolute; /* Posicionamiento dentro del carrusel */
+    z-index: 1000; /* Asegura que la barra esté por encima de otros elementos */
+    width: 0%; /* Ancho inicial de la barra */
+    height: 4px; /* Altura de la barra de tiempo */
+    background-color: #000000cb; /* Color de la barra */
+    left: 0; /* Alinea a la izquierda */
+    top: 0; /* Posiciona en la parte superior */
+    animation: runningTime 7s linear 1 forwards; /* Animación que llena la barra en 7 segundos */
+}
+
+/* Animación para la barra de tiempo */
+@keyframes runningTime { 
+    from{width: 0%;} /* Comienza sin ancho */
+    to{width: 100%;} /* Termina ocupando el 100% del ancho */
+}
+
+/* Animaciones de texto al aparecer */
+@keyframes animate {
+    from{
+        opacity: 0; /* Comienza transparente */
+        transform: translateY(100px); /* Desplazado hacia abajo */
+        filter: blur(10px); /* Con desenfoque */
+    }
+    to{
+        opacity: 1; /* Termina completamente opaco */
+        transform: translateY(0); /* Posición normal */
+        filter: blur(0); /* Sin desenfoque */
+    }
+}
+
+/* Diseño responsivo para pantallas medianas */
+@media screen and (max-width: 999px){
+    header{
+        padding-left: 50px; /* Reduce el espaciado lateral en pantallas más pequeñas */
+    }
+    .list .item .content{
+        width: 90%; /* Ancho del contenido adaptado al tamaño de pantalla */
+    }
+    .glass-container .title{
+        font-size: 28px; /* Reduce el tamaño del título */
+    }
+    .glass-container .name{
+        font-size: 20px; /* Reduce el tamaño del nombre */
+    }
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media screen and (max-width: 690px){
+    header nav a{
+        font-size: 14px; /* Reduce el tamaño de los enlaces de navegación */
+    }
+    .glass-container .title{
+        font-size: 24px; /* Tamaño del título más pequeño */
+    }
+    .glass-container .name{
+        font-size: 18px; /* Tamaño del nombre más pequeño */
+    }
+    .glass-container .des{
+        font-size: 14px; /* Tamaño de la descripción más pequeño */
+    }
+    .glass-container .btn button{
+        padding: 8px 12px; /* Reduce el espaciado interno de los botones */
+        font-size: 14px; /* Reduce el tamaño de fuente de los botones */
+    }
+}
